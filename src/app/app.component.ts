@@ -7,4 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'shopping';
+  showRecipes: boolean = true;
+  showShoppingList: boolean = false;
+
+  onRecipesClicked() {
+    console.log('recipes clicked');
+    this.showRecipes = true;
+    this.showShoppingList = false;
+  }
+
+  onShoppingListClicked() {
+    console.log('shopping clicked');
+    this.showRecipes = false;
+    this.showShoppingList = true;
+  }
+
 }
