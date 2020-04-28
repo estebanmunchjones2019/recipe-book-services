@@ -3,36 +3,24 @@ import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { Subject } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  private recipes: Recipe[] = [ // private prevent recipes to be accessed from outside
-    new Recipe(
-      'Lomito',
-      'Impresionante lomito al asador',
-      'https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg',
-      [
-        new Ingredient('Meat', 1),
-        new Ingredient('Onion', 5),
-        new Ingredient('Red pepper', 2)
-      ]
-      ),
-    new Recipe(
-      'Empanadas',
-      'Empanaditas hechas al horno',
-      'https://cdn.pixabay.com/photo/2017/04/29/00/42/empanadas-2269803_960_720.jpg',
-      [
-        new Ingredient('Meat', 2),
-        new Ingredient('Onion', 1),
-        new Ingredient('Red pepper', 2),
-        new Ingredient('flour', 3),
-      ]
-        ),
-  ];
+  private recipes: Recipe[] = [] // private prevent recipes to be accessed from outside
+
   recipeChanged = new Subject<Recipe[]>();
   // recipeClicked = new EventEmitter<Recipe>();
   // private recipe: Recipe;
+
+  constructor(){}
+
+  setRecipes(recipes: Recipe[]) {
+    console.log(recipes);
+    this.recipes = recipes;
+    this.recipeChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return [...this.recipes.slice()]; // or this.recipes.slice(), to not return just the pointer
@@ -62,5 +50,4 @@ export class RecipeService {
   //   this.recipeClicked.emit(recipe);
   // }
 
-  constructor() { }
 }
