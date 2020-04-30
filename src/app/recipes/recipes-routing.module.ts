@@ -9,7 +9,7 @@ import { RecipesResolverService } from './recipes-resolver.service';
 
 
 const routes: Routes = [
-  { path: 'recipes',       component: RecipesComponent, 
+  { path: '',       component: RecipesComponent, //lazyloading requires to have '' path because the RecipesModule is loading when already in '/recipes'
     canActivate: [AuthGuard],
     children: [
         {path: '',           component: RecipeStartComponent},
