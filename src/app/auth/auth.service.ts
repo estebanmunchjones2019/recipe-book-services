@@ -4,6 +4,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { throwError, BehaviorSubject } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 export interface AuthResponseData {
   kind: string,
@@ -21,14 +22,14 @@ export interface AuthResponseData {
 export class AuthService {
   user = new BehaviorSubject<User>(null); // the subcriber can subscribe later, upon fetch recipes, and still get the latest user, even when the subject called next when the user logged in a few minutes before
   // I could have a token variable in this class which updates upon user emmitions, and can be accessed by dataStorageService, another approach
-  api_key: string = 'AIzaSyA_ho2nIeZ_0AnAO1tmB0XATrTZOC7RlWU';
+  
   private tokenExpirationTimer: any;
 
   constructor(private http: HttpClient,
               private router: Router) { }
 
   signUp(email: string, password: string) {
-    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${this.api_key}`,
+    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.api_key}`,
       {
         email: email,
         password: password,
@@ -40,7 +41,7 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${this.api_key}`,
+    return this.http.post<AuthResponseData>(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.api_key}`,
     {
       email: email,
       password: password,
