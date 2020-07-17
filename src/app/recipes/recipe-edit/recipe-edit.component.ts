@@ -87,10 +87,11 @@ export class RecipeEditComponent implements OnInit {
   }
     
 
-  onSumbit() {
+  onSubmit() {
     // const value = this.recipeForm.value; //not neccesary because the form.value has the same shape as Recipe
     // const recipe = new Recipe(value.name, value.description, value.imagePath, value.ingredients)
     if (this.editMode) {
+      debugger;
       this.recipeService.updateRecipe(this.id, this.recipeForm.value);
     } else {
       this.recipeService.addRecipe(this.recipeForm.value);
