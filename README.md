@@ -107,7 +107,7 @@ Run
 ng build 
 ```
 
-to build the project. The build artifacts will be stored in the `dist/fitness-tracker` directory. Use the `--prod` flag for a production build.
+to build the project. The build artifacts will be stored in the `dist/recipe-book` directory. Use the `--prod` flag for a production build.
 
 #### Running unit tests
 
@@ -140,14 +140,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 List of implemented features:
 * Authentication
 * Form validation
-* PUT and GET  requests to a [Firebase RealTime Database](https://firebase.google.com/docs/database).
+* Create and read operations to/from [Firebase RealTime Database](https://firebase.google.com/docs/database).
 * Lazy loading
 * Nested routes
 * Pass data with route parameters
 
 List of possible improvements:
 
-* Automatically GET the data from the database after being logged in, and also automatically  POST and PUT new recipes and changes made to them , without the need of clicking the `fetch` and `save` buttons from the `Manage` dropdown menu.
+* Automatically read the data from the database after being logged in, and also automatically  create new recipes and update changes made to them , without the need of clicking the `fetch` and `save` buttons from the `Manage` dropdown menu.
 * Store each user's recipes and shopping list items in a separate collection, because now it's a shared database between all users.
 
 ## Status
